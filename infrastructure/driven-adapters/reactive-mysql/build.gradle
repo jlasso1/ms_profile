@@ -1,0 +1,10 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation project(':commons')
+    implementation project(':model')
+    implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+    implementation 'org.reactivecommons.utils:object-mapper-api:0.1.0'
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation 'dev.miku:r2dbc-mysql:0.8.2.RELEASE'
+
+}

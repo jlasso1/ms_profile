@@ -1,0 +1,4 @@
+dependencies {
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.2.1'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}

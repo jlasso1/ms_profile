@@ -1,0 +1,42 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "ms_profile"
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: "/h2"
+  profiles:
+    include: null
+
+management:
+  endpoints:
+    web:
+      base-path: /api/v1/twitter/
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+
+adapter:
+  restconsumer:
+    timeout: 5000
+    url: "https://api.twitter.com/1.1/statuses"
+    path: "/user_timeline.json"
+    consumer-key: KRy7l0v8wex3w8Sy5zThai3Ea
+    consumer-secret: X2eBm0Y21kYEuR74W3Frqc2JVIizOj8Q1EVGatDsEVVEJo0ucu
+    access-token: 1220032047516921859-otvXjhExyUTZ5GLxssc9h5ORqtPZja
+    token-secret: tmJKqM4ORfQW6CH7wIVV8uKNpmSEmeFAP8lYwGb19uYjj
+
+postgres:
+  host: zemoga-test-db.crhpedy9xxto.us-east-1.rds.amazonaws.com
+  database: zemoga_test_db
+  port: 3306
+  username: zemoga_test_db
+  password: Zem0ga.101
+

@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+        cleanArchitectureVersion = '1.8.2'
+        springBootVersion = '2.6.6'
+        sonarVersion = '3.0'
+        jacocoVersion = '0.8.5'
+	}
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'net.ltgt.apt' version '0.8'
+    // id 'org.springframework.boot' version "${springBootVersion}"
+    id "co.com.bancolombia.cleanArchitecture" version "${cleanArchitectureVersion}"
+    id 'org.sonarqube' version "${sonarVersion}"
+    id 'jacoco'
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEnconding", "UTF-8"
+        property "sonar.modules", "applications/app-service," +
+                "domain/model, domain/usecase," +
+                "infraestructure/driven-adapters/*, infraestructure/entry-points/*"
+        property "sonar.sources", "src/main, build.gradle"
+        property "sonar.test", "src/test"
+        property "sonar.java.binaries", ""
+        property "sonar.junit.reportsPath", ""
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
+    }
+}
+
+apply from: './main.gradle'
